@@ -69,7 +69,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-
 .btn-gold:hover { background: #ffbb4f; }
 .btn-line { border-color: rgba(255,255,255,.5); color: #fff; }
 .btn-line:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-.scene { align-self: end; display: block; width: 100%; height: auto; }
 .stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .hills { position: relative; z-index: 2; display: block; width: 100%; height: 90px; margin-top: -2px; }
 
@@ -153,9 +152,51 @@ section.block { padding-block: 88px; }
 footer { padding-block: 48px 64px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; display: grid; gap: 10px; }
 footer strong { color: var(--ink); }
 
+
+/* ---------- Photos ---------- */
+.hero-photo { position: relative; margin: 0; align-self: end; display: grid; justify-items: center; }
+.arch-glow { position: absolute; left: 50%; bottom: 0; width: 118%; aspect-ratio: 1; max-width: 560px; transform: translate(-50%, 42%); border-radius: 50%; background: radial-gradient(circle, rgba(242,169,59,.55) 0%, rgba(242,169,59,0) 65%); }
+.arch { position: relative; width: min(100%, 400px); aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0; overflow: hidden; border: 6px solid var(--gold); border-bottom: 0; background: #2a2466; }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 30%; display: block; }
+.hero-photo .kite { position: absolute; width: 70px; top: -36px; right: max(0px, calc(50% - 250px)); }
+.hero-photo figcaption { position: relative; font-size: .74rem; color: rgba(255,255,255,.75); padding-block: 10px 74px; text-align: center; }
+.hero-photo figcaption a { color: rgba(255,255,255,.9); }
+
+.photos { padding-top: 64px; }
+.mosaic { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 14px; }
+.mosaic figure { position: relative; margin: 0; border-radius: 20px; overflow: hidden; min-width: 0; background: var(--line); }
+.mosaic .m1 { grid-row: span 2; }
+.mosaic .m4 { grid-column: span 2; }
+.mosaic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mosaic .m3 img { object-position: 50% 60%; }
+.mosaic .m4 img { object-position: 50% 45%; }
+.mosaic figcaption { position: absolute; inset: auto 0 0 0; padding: 40px 18px 14px; font-size: .78rem; color: rgba(255,255,255,.82); background: linear-gradient(transparent, rgba(16,14,40,.82)); }
+.mosaic figcaption strong { display: block; font-family: var(--display); font-weight: 400; font-size: 1.45rem; color: #fff; line-height: 1.1; margin-bottom: 2px; }
+.mosaic figcaption a { color: #fff; }
+
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; margin-bottom: 48px; }
+.about .head { margin-bottom: 0; }
+.about-photo { margin: 0; display: grid; gap: 8px; }
+.about-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 20px; display: block; }
+.about-photo figcaption { font-size: .8rem; color: var(--muted); }
+
+@media (max-width: 960px) {
+  .hero-photo .kite { right: 4%; }
+  .hero-photo figcaption { padding-bottom: 64px; }
+  .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 220px 240px; }
+  .mosaic .m1 { grid-row: auto; grid-column: span 2; }
+  .mosaic .m4 { grid-column: span 2; }
+  .about { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .arch { width: min(86%, 340px); }
+  .mosaic { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 240px; }
+  .mosaic .m1, .mosaic .m4 { grid-column: auto; }
+}
+
 /* ---------- Motion (content is visible at rest) ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  .kite { animation: drift 6s ease-in-out infinite; transform-origin: 300px 70px; }
+  .kite { animation: drift 6s ease-in-out infinite; transform-origin: 50% 100%; }
   @keyframes drift { 0%,100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-8px); } }
   .sun { animation: glow 5s ease-in-out infinite; }
   @keyframes glow { 0%,100% { opacity: .95; } 50% { opacity: 1; } }
@@ -167,7 +208,6 @@ footer strong { color: var(--ink); }
 @media (max-width: 960px) {
   .hero-body { grid-template-columns: 1fr; }
   .hero-copy { padding-bottom: 0; }
-  .scene { max-width: 420px; justify-self: center; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cycle { grid-template-columns: 1fr; }
   .cycle svg { max-width: 520px; justify-self: center; }
@@ -228,25 +268,19 @@ footer strong { color: var(--ink); }
         </div>
       </div>
 
-      <svg class="scene" viewBox="0 0 400 360" role="img" aria-label="A child flying a kite as the sun rises">
-        <circle class="sun" cx="200" cy="300" r="120" fill="#f2a93b" opacity=".95"/>
-        <circle cx="200" cy="300" r="160" fill="#f2a93b" opacity=".12"/>
-        <g class="kite">
-          <path d="M300 20 L332 60 L300 110 L268 60 Z" fill="#e4572e"/>
-          <path d="M300 20 L300 110 M268 60 L332 60" stroke="#fff" stroke-width="1.5" opacity=".7"/>
-          <path d="M300 110 q-10 18 4 30 q12 12 -4 26" stroke="#fff" stroke-width="1.5" fill="none" opacity=".8"/>
-          <path d="M296 128 l8 -4 l-2 8 z M300 152 l8 -4 l-2 8 z" fill="#f2a93b"/>
-        </g>
-        <path d="M300 110 C 270 190, 210 230, 168 262" stroke="#fff" stroke-width="1.2" fill="none" opacity=".75"/>
-        <g fill="#141838">
-          <circle cx="150" cy="248" r="13"/>
-          <path d="M138 264 h24 l6 50 h-36 z"/>
-          <path d="M160 270 l12 -10" stroke="#141838" stroke-width="7" stroke-linecap="round"/>
-          <path d="M140 270 l-10 22" stroke="#141838" stroke-width="7" stroke-linecap="round"/>
-          <path d="M142 312 l-4 30 M158 312 l6 30" stroke="#141838" stroke-width="8" stroke-linecap="round"/>
-          <rect x="118" y="286" width="16" height="20" rx="2" fill="#3a55e6" transform="rotate(-12 126 296)"/>
-        </g>
-      </svg>
+      <figure class="hero-photo">
+        <div class="arch-glow" aria-hidden="true"></div>
+        <div class="arch">
+          <img src="images/girl-smiling-mali.jpg" width="1200" height="800" alt="A smiling girl at her desk during a reading class in Bamako, Mali" fetchpriority="high">
+        </div>
+        <svg class="kite" viewBox="0 0 80 160" aria-hidden="true">
+          <path d="M40 4 L68 40 L40 86 L12 40 Z" fill="#e4572e"/>
+          <path d="M40 4 L40 86 M12 40 L68 40" stroke="#fff" stroke-width="1.5" opacity=".7"/>
+          <path d="M40 86 q-10 18 4 30 q12 12 -4 26" stroke="#fff" stroke-width="1.5" fill="none" opacity=".85"/>
+          <path d="M36 104 l8 -4 l-2 8 z M40 128 l8 -4 l-2 8 z" fill="#f2a93b"/>
+        </svg>
+        <figcaption>Reading class in Bamako, Mali. Photo: <a href="https://commons.wikimedia.org/wiki/File:Integrated_Reading_Activity_in_Bamako,_Mali_(38723302555).jpg" target="_blank" rel="noopener">USAID in Africa</a>, public domain</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -275,6 +309,35 @@ footer strong { color: var(--ink); }
       </div>
     </div>
   </div>
+
+
+  <section class="block photos" id="childhood" aria-labelledby="childhood-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">What we are working toward</span>
+        <h2 id="childhood-h">Every child deserves a <em>childhood</em>.</h2>
+        <p>Time to read, play and learn with friends. These are the moments child labour takes away, and the moments every project on this page is protecting.</p>
+      </div>
+      <div class="mosaic">
+        <figure class="m1">
+          <img src="images/girls-reading-mali.jpg" width="1200" height="800" loading="lazy" alt="Girls reading their books together at a school desk in Bamako, Mali">
+          <figcaption><strong>Learning to read</strong> Bamako, Mali. <a href="https://commons.wikimedia.org/wiki/File:Integrated_Reading_Activity_in_Bamako,_Mali_(24751556697).jpg" target="_blank" rel="noopener">USAID in Africa</a>, public domain</figcaption>
+        </figure>
+        <figure class="m2">
+          <img src="images/kite-chittagong.jpg" width="1200" height="801" loading="lazy" alt="A boy holding a kite reel and watching his kite in the sky in Chittagong, Bangladesh">
+          <figcaption><strong>Time to play</strong> Chittagong, Bangladesh. <a href="https://commons.wikimedia.org/wiki/File:Kite_flying_in_Chittagong_(19466358111).jpg" target="_blank" rel="noopener">Mohammed Abdullah</a>, CC BY 2.0</figcaption>
+        </figure>
+        <figure class="m3">
+          <img src="images/rope-jumping.jpg" width="1200" height="1104" loading="lazy" alt="Children playing jump rope together on a sandy village street">
+          <figcaption><strong>Playing with friends</strong> A village street. <a href="https://commons.wikimedia.org/wiki/File:Children_in_a_village_playing_rope_jumping.jpg" target="_blank" rel="noopener">Roukia Ita Djibrine</a>, CC BY-SA 4.0</figcaption>
+        </figure>
+        <figure class="m4">
+          <img src="images/tamil-nadu-class.jpg" width="1200" height="900" loading="lazy" alt="Students in school uniforms standing in front of chalkboards in a classroom in Tamil Nadu, India">
+          <figcaption><strong>In the classroom</strong> Tamil Nadu, India. <a href="https://commons.wikimedia.org/wiki/File:Tamil_Nadu_school_kids.jpg" target="_blank" rel="noopener">McKay Savage</a>, CC BY 2.0</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
   <section class="block" id="cycle">
     <div class="wrap">
@@ -375,10 +438,16 @@ footer strong { color: var(--ink); }
 
   <section class="block" id="journey">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">About this project</span>
-        <h2>How this site was <em>made</em>.</h2>
-        <p>Helping Hands is my MYP Service as Action project. It followed the five stages of service learning.</p>
+      <div class="about">
+        <div class="head">
+          <span class="eyebrow">About this project</span>
+          <h2>How this site was <em>made</em>.</h2>
+          <p>Helping Hands is my MYP Service as Action project. It followed the five stages of service learning.</p>
+        </div>
+        <figure class="about-photo">
+          <img src="images/nepal-school.jpg" width="1200" height="799" loading="lazy" alt="Young students in school uniforms and ties lined up at their school in Nepal">
+          <figcaption>Back at school in Nepal. <a href="https://commons.wikimedia.org/wiki/File:Happy_to_be_back_in_school_(8424386762).jpg" target="_blank" rel="noopener">DFID</a>, CC BY 2.0</figcaption>
+        </figure>
       </div>
       <div class="journey">
         <div class="stage"><span class="pin">1</span><div><h3>Investigate</h3><p>Researched child labour and poverty using ILO and World Bank data, then chose four issues.</p></div></div>
@@ -395,6 +464,7 @@ footer strong { color: var(--ink); }
   <footer>
     <p><strong>Helping Hands</strong> is a student Service as Action project. It is not run by or connected to any organization listed.</p>
     <p>Facts from the <a href="https://www.ilo.org/topics-and-sectors/child-labour" target="_blank" rel="noopener">International Labour Organization</a> and the <a href="https://www.worldbank.org/en/topic/poverty/overview" target="_blank" rel="noopener">World Bank</a>. Links checked October 1, 2026.</p>
+    <p>Photos from <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>, used under the licenses shown with each photo. Licenses: <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
   </footer>
 </div>
 
