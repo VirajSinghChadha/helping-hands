@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Helping Hands</title>
+<meta name="description" content="Trusted projects fighting child labour, poverty, hunger and lack of schooling, with links to their official donation pages. A student Service as Action project.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='10' fill='%23f2a93b'/%3E%3Cpath d='M22 4l5 5-5 5-5-5z' fill='%23e4572e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: full-bleed sunrise hero, then a 1120px column of sections: facts, the cycle, projects by issue, ways to help, project journey. */
+:root {
+  --paper: #f4f6fc;
+  --surface: #ffffff;
+  --ink: #161a3a;
+  --muted: #5a6085;
+  --line: #dfe3f2;
+  --night: #141838;
+  --gold: #f2a93b;
+  --coral: #e4572e;
+  --labour: #e4572e;
+  --poverty: #17876b;
+  --hunger: #d98a12;
+  --education: #3a55e6;
+  --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1230; --surface: #181c44; --ink: #eef0ff; --muted: #a9aed3; --line: #2a2f63;
+    --labour: #ff7a52; --poverty: #3fc49e; --hunger: #f4b54a; --education: #8095ff;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img, svg { max-width: 100%; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+.eyebrow { font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; color: #fff; overflow: hidden;
+  background: linear-gradient(180deg, #141838 0%, #2a2466 34%, #7a3a78 58%, #e4572e 82%, #f2a93b 100%); }
+.hero nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; position: relative; z-index: 2; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .02em; text-decoration: none; font-size: 1.05rem; }
+.brand svg { width: 30px; height: 30px; }
+.hero nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; font-weight: 600; font-size: .95rem; }
+.hero nav ul a { text-decoration: none; opacity: .82; }
+.hero nav ul a:hover { opacity: 1; }
+.hero-body { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 32px; align-items: end; padding-block: 56px 0; }
+.hero-copy { padding-bottom: 120px; display: grid; gap: 22px; }
+.hero .eyebrow { color: rgba(255,255,255,.75); }
+.hero h1 { font-size: clamp(3rem, 8vw, 6.2rem); }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p.lead { font-size: 1.15rem; max-width: 52ch; color: rgba(255,255,255,.86); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; font-family: inherit; }
+.btn svg { width: 16px; height: 16px; }
+.btn-gold { background: var(--gold); color: #1d1630; }
+.btn-gold:hover { background: #ffbb4f; }
+.btn-line { border-color: rgba(255,255,255,.5); color: #fff; }
+.btn-line:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+.scene { align-self: end; display: block; width: 100%; height: auto; }
+.stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hills { position: relative; z-index: 2; display: block; width: 100%; height: 90px; margin-top: -2px; }
+
+/* ---------- Facts ---------- */
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: -1px; padding-block: 56px 24px; }
+.fact { padding: 8px 28px; display: grid; gap: 8px; align-content: start; }
+.fact + .fact { border-left: 1px solid var(--line); }
+.fact:first-child { padding-left: 0; }
+.fact .num { font-family: var(--display); font-size: clamp(3rem, 6vw, 4.4rem); line-height: .95; font-variant-numeric: tabular-nums; }
+.fact .what { font-weight: 600; }
+.fact .src { font-size: .82rem; color: var(--muted); }
+
+/* ---------- Sections ---------- */
+section.block { padding-block: 88px; }
+.head { display: grid; gap: 14px; margin-bottom: 40px; max-width: 720px; }
+.head h2 { font-size: clamp(2.4rem, 5.5vw, 3.8rem); }
+.head h2 em { font-style: italic; }
+.head p { color: var(--muted); font-size: 1.08rem; }
+
+/* ---------- Cycle ---------- */
+.cycle { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.cycle svg { width: 100%; height: auto; }
+.cycle svg text { font-family: var(--body); }
+.breaks { display: grid; gap: 18px; }
+.break { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start; }
+.break .dot { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+.break .dot svg { width: 22px; height: 22px; }
+.break h3 { font-family: var(--body); font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.break p { color: var(--muted); font-size: .97rem; }
+
+/* ---------- Projects ---------- */
+.projects { background: var(--surface); border-block: 1px solid var(--line); }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.chip { --c: var(--ink); display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: .95rem; font-weight: 700; padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.chip:hover { border-color: var(--c); }
+.chip .sw { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.chip[aria-pressed="true"] { background: var(--c); border-color: var(--c); color: var(--paper); }
+.chip[aria-pressed="true"] .sw { background: var(--paper); }
+.chip .n { font-weight: 500; opacity: .7; font-variant-numeric: tabular-nums; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { --c: var(--ink); position: relative; display: flex; flex-direction: column; gap: 14px; padding: 26px; border-radius: 22px; background: var(--paper); border: 1px solid var(--line); min-width: 0; }
+.card .top { display: flex; align-items: center; gap: 12px; }
+.card .ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #fff; background: var(--c); flex: none; }
+.card .ico svg { width: 24px; height: 24px; }
+.card .tag { font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--c); }
+.card h3 { font-size: 1.85rem; }
+.card p { color: var(--muted); font-size: .98rem; }
+.card .where { font-size: .86rem; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+.card .where svg { width: 14px; height: 14px; flex: none; }
+.card .foot { margin-top: auto; padding-top: 16px; border-top: 1px dashed var(--line); display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.card .host { font-size: .82rem; color: var(--muted); word-break: break-all; }
+.donate { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; background: var(--c); color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none; }
+.donate svg { width: 14px; height: 14px; transition: transform .15s ease; }
+.donate:hover svg { transform: translate(2px, -2px); }
+@media (prefers-color-scheme: dark) { .donate, .card .ico, .break .dot { color: #10122b; } }
+
+/* ---------- Ways to help ---------- */
+.ways { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.way { display: grid; gap: 10px; align-content: start; }
+.way .k { font-family: var(--display); font-style: italic; font-size: 3rem; line-height: 1; color: var(--coral); }
+.way h3 { font-family: var(--body); font-weight: 700; font-size: 1.1rem; line-height: 1.3; }
+.way p { color: var(--muted); font-size: .97rem; }
+
+.safe { margin-top: 72px; border-radius: 28px; padding: 44px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 40px; color: #fff;
+  background: radial-gradient(120% 140% at 100% 0%, #7a3a78 0%, #2a2466 45%, #141838 100%); }
+.safe h2 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
+.safe h2 em { color: var(--gold); }
+.safe p { color: rgba(255,255,255,.8); margin-top: 12px; }
+.safe ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.safe li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; color: rgba(255,255,255,.92); }
+.safe li svg { width: 22px; height: 22px; color: var(--gold); margin-top: 2px; }
+
+/* ---------- Journey ---------- */
+.journey { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+.journey::before { content: ""; position: absolute; left: 0; right: 0; top: 21px; height: 2px; background: linear-gradient(90deg, var(--labour), var(--hunger), var(--poverty), var(--education)); opacity: .55; }
+.stage { position: relative; display: grid; gap: 10px; padding-right: 20px; align-content: start; }
+.stage .pin { width: 44px; height: 44px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink); display: grid; place-items: center; font-weight: 800; font-variant-numeric: tabular-nums; }
+.stage h3 { font-size: 1.7rem; }
+.stage p { color: var(--muted); font-size: .95rem; }
+
+footer { padding-block: 48px 64px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; display: grid; gap: 10px; }
+footer strong { color: var(--ink); }
+
+/* ---------- Motion (content is visible at rest) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .kite { animation: drift 6s ease-in-out infinite; transform-origin: 300px 70px; }
+  @keyframes drift { 0%,100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-8px); } }
+  .sun { animation: glow 5s ease-in-out infinite; }
+  @keyframes glow { 0%,100% { opacity: .95; } 50% { opacity: 1; } }
+  .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .card:hover { transform: translateY(-4px); border-color: var(--c); box-shadow: 0 18px 40px -24px var(--c); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .hero-body { grid-template-columns: 1fr; }
+  .hero-copy { padding-bottom: 0; }
+  .scene { max-width: 420px; justify-self: center; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cycle { grid-template-columns: 1fr; }
+  .cycle svg { max-width: 520px; justify-self: center; }
+  .ways { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .safe { grid-template-columns: 1fr; padding: 32px; }
+  .journey { grid-template-columns: 1fr; gap: 22px; }
+  .journey::before { left: 21px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(180deg, var(--labour), var(--hunger), var(--poverty), var(--education)); }
+  .stage { grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; padding-right: 0; }
+  .stage .pin { grid-row: span 2; }
+}
+@media (max-width: 640px) {
+  .wrap { padding-inline: 16px; }
+  .hero nav ul { display: none; }
+  .facts { grid-template-columns: 1fr; padding-top: 36px; }
+  .fact, .fact:first-child { padding: 20px 0; }
+  .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
+  .grid, .ways { grid-template-columns: 1fr; }
+  section.block { padding-block: 64px; }
+  .safe { padding: 24px; border-radius: 22px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="stars" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="#fff">
+      <circle cx="80" cy="60" r="1.4" opacity=".7"/><circle cx="220" cy="120" r="1" opacity=".5"/><circle cx="410" cy="40" r="1.6" opacity=".8"/>
+      <circle cx="560" cy="150" r="1" opacity=".4"/><circle cx="700" cy="70" r="1.3" opacity=".7"/><circle cx="860" cy="30" r="1" opacity=".5"/>
+      <circle cx="980" cy="110" r="1.5" opacity=".6"/><circle cx="1120" cy="50" r="1.1" opacity=".6"/><circle cx="330" cy="200" r="1" opacity=".35"/>
+      <circle cx="1050" cy="190" r="1" opacity=".35"/><circle cx="150" cy="230" r="1" opacity=".3"/><circle cx="640" cy="240" r="1" opacity=".3"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="19" r="9" fill="#f2a93b"/><path d="M23 3l5 5-5 5-5-5z" fill="#e4572e"/><path d="M23 13c-1 5-4 6-7 6" stroke="#fff" stroke-width="1.2" fill="none"/></svg>
+        Helping Hands
+      </a>
+      <ul>
+        <li><a href="#cycle">The cycle</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#help">How to help</a></li>
+        <li><a href="#journey">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-body" id="top">
+      <div class="hero-copy">
+        <span class="eyebrow">A student Service as Action project</span>
+        <h1>Childhood is for <em>learning</em>, not labour.</h1>
+        <p class="lead">Child labour, poverty, hunger and missing school feed each other. Here are 12 trusted projects breaking that cycle, each linked straight to its own official donation page.</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="#projects">Find a project
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3v10M3 8l5 5 5-5"/></svg></a>
+          <a class="btn btn-line" href="#cycle">Why it matters</a>
+        </div>
+      </div>
+
+      <svg class="scene" viewBox="0 0 400 360" role="img" aria-label="A child flying a kite as the sun rises">
+        <circle class="sun" cx="200" cy="300" r="120" fill="#f2a93b" opacity=".95"/>
+        <circle cx="200" cy="300" r="160" fill="#f2a93b" opacity=".12"/>
+        <g class="kite">
+          <path d="M300 20 L332 60 L300 110 L268 60 Z" fill="#e4572e"/>
+          <path d="M300 20 L300 110 M268 60 L332 60" stroke="#fff" stroke-width="1.5" opacity=".7"/>
+          <path d="M300 110 q-10 18 4 30 q12 12 -4 26" stroke="#fff" stroke-width="1.5" fill="none" opacity=".8"/>
+          <path d="M296 128 l8 -4 l-2 8 z M300 152 l8 -4 l-2 8 z" fill="#f2a93b"/>
+        </g>
+        <path d="M300 110 C 270 190, 210 230, 168 262" stroke="#fff" stroke-width="1.2" fill="none" opacity=".75"/>
+        <g fill="#141838">
+          <circle cx="150" cy="248" r="13"/>
+          <path d="M138 264 h24 l6 50 h-36 z"/>
+          <path d="M160 270 l12 -10" stroke="#141838" stroke-width="7" stroke-linecap="round"/>
+          <path d="M140 270 l-10 22" stroke="#141838" stroke-width="7" stroke-linecap="round"/>
+          <path d="M142 312 l-4 30 M158 312 l6 30" stroke="#141838" stroke-width="8" stroke-linecap="round"/>
+          <rect x="118" y="286" width="16" height="20" rx="2" fill="#3a55e6" transform="rotate(-12 126 296)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <svg class="hills" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 50 C 240 10, 420 80, 720 40 S 1200 10, 1440 50 V90 H0 Z" fill="var(--paper)"/>
+  </svg>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="facts" role="list" aria-label="Key facts">
+      <div class="fact" role="listitem">
+        <span class="num" style="color:var(--labour)">138M</span>
+        <span class="what">children are in child labour. 54 million of them do hazardous work.</span>
+        <a class="src" href="https://www.ilo.org/topics-and-sectors/child-labour" target="_blank" rel="noopener">ILO, Global estimates 2024</a>
+      </div>
+      <div class="fact" role="listitem">
+        <span class="num" style="color:var(--poverty)">831M</span>
+        <span class="what">people live on less than $3 a day.</span>
+        <a class="src" href="https://www.worldbank.org/en/topic/poverty/overview" target="_blank" rel="noopener">World Bank, poverty overview</a>
+      </div>
+      <div class="fact" role="listitem">
+        <span class="num" style="color:var(--education)">1 in 5</span>
+        <span class="what">children, about 412 million, grow up in extreme poverty.</span>
+        <a class="src" href="https://www.worldbank.org/en/topic/poverty/overview" target="_blank" rel="noopener">World Bank, 2024 estimate</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="cycle">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Why it matters</span>
+        <h2>Poverty and child labour form a <em>cycle</em>.</h2>
+        <p>When a family is poor, children often work to help. Working children miss school, so as adults they can only find low-paid jobs, and their own children face the same choice.</p>
+      </div>
+      <div class="cycle">
+        <svg viewBox="0 0 520 480" role="img" aria-label="Cycle: family poverty leads to children working, which leads to missing school, which leads to low-paid jobs as adults, which leads back to family poverty">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+          </defs>
+          <circle cx="260" cy="240" r="150" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 8"/>
+          <g fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arr)">
+            <path d="M330 110 A150 150 0 0 1 392 172"/>
+            <path d="M392 308 A150 150 0 0 1 330 370"/>
+            <path d="M190 370 A150 150 0 0 1 128 308"/>
+            <path d="M128 172 A150 150 0 0 1 190 110"/>
+          </g>
+          <g font-size="15" font-weight="700" text-anchor="middle" fill="var(--ink)">
+            <rect x="170" y="62" width="180" height="52" rx="26" fill="var(--surface)" stroke="var(--poverty)" stroke-width="2"/>
+            <text x="260" y="94">Family is poor</text>
+            <rect x="330" y="214" width="180" height="52" rx="26" fill="var(--surface)" stroke="var(--labour)" stroke-width="2"/>
+            <text x="420" y="246">Children work</text>
+            <rect x="170" y="366" width="180" height="52" rx="26" fill="var(--surface)" stroke="var(--education)" stroke-width="2"/>
+            <text x="260" y="398">Children miss school</text>
+            <rect x="10" y="214" width="180" height="52" rx="26" fill="var(--surface)" stroke="var(--hunger)" stroke-width="2"/>
+            <text x="100" y="246">Low-paid jobs later</text>
+          </g>
+          <text x="260" y="232" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="30" fill="var(--ink)">Break</text>
+          <text x="260" y="264" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="30" fill="var(--ink)">the cycle</text>
+        </svg>
+
+        <div class="breaks">
+          <div class="break">
+            <span class="dot" style="background:var(--poverty)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+            <div><h3>Raise family income</h3><p>Cash transfers, livestock and job training mean parents can earn enough without their children's wages.</p></div>
+          </div>
+          <div class="break">
+            <span class="dot" style="background:var(--labour)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span>
+            <div><h3>Rescue and protect children</h3><p>Groups find children in dangerous work, bring them to safety and check that factories stay child-labour free.</p></div>
+          </div>
+          <div class="break">
+            <span class="dot" style="background:var(--hunger)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18a9 9 0 0 1-18 0z"/><path d="M8 8c0-2 2-2 2-4M13 8c0-2 2-2 2-4"/></svg></span>
+            <div><h3>Feed children at school</h3><p>A free school meal gives families a strong reason to send children to class instead of work.</p></div>
+          </div>
+          <div class="break">
+            <span class="dot" style="background:var(--education)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c3-1.5 7-1.5 10 1 3-2.5 7-2.5 10-1v13c-3-1.5-7-1.5-10 1-3-2.5-7-2.5-10-1z"/><path d="M12 7v13"/></svg></span>
+            <div><h3>Keep children learning</h3><p>Books, teachers and support for girls help children finish school and find better jobs.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block projects" id="projects">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">12 projects</span>
+        <h2>Projects you can <em>support</em>.</h2>
+        <p>Every organization here works directly on the issue and takes donations on its own website. Choose an issue to narrow the list.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects by issue" id="filters"></div>
+      <div class="grid" id="grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="block" id="help">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">No money? No problem</span>
+        <h2>Other ways to <em>help</em>.</h2>
+      </div>
+      <div class="ways">
+        <div class="way"><span class="k">i.</span><h3>Learn the facts</h3><p>Read the ILO and World Bank pages so you can explain the issue clearly.</p></div>
+        <div class="way"><span class="k">ii.</span><h3>Share this page</h3><p>Send it to friends and family, or present it in class or at an assembly.</p></div>
+        <div class="way"><span class="k">iii.</span><h3>Shop with care</h3><p>Look for Fairtrade or GoodWeave labels, which check supply chains for child labour.</p></div>
+        <div class="way"><span class="k">iv.</span><h3>Fundraise together</h3><p>Hold a bake sale or sponsored walk, then give through an official donation page.</p></div>
+      </div>
+
+      <div class="safe" id="safe">
+        <div>
+          <span class="eyebrow" style="color:rgba(255,255,255,.7)">Before you give</span>
+          <h2>Give <em>safely</em>.</h2>
+          <p>Scams copy real charities. These habits make sure your money goes where you mean it to.</p>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Donate only on the charity's own website. Every button here goes straight there.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Check that the address bar shows the charity's real web address and a lock icon.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>If you are under 18, ask a parent or guardian before giving money online.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Look a charity up on Charity Navigator or GiveWell before you give.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Never pay someone who contacts you first and pressures you to give fast.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="journey">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">About this project</span>
+        <h2>How this site was <em>made</em>.</h2>
+        <p>Helping Hands is my MYP Service as Action project. It followed the five stages of service learning.</p>
+      </div>
+      <div class="journey">
+        <div class="stage"><span class="pin">1</span><div><h3>Investigate</h3><p>Researched child labour and poverty using ILO and World Bank data, then chose four issues.</p></div></div>
+        <div class="stage"><span class="pin">2</span><div><h3>Prepare</h3><p>Shortlisted 12 trusted charities and planned the sections of the site.</p></div></div>
+        <div class="stage"><span class="pin">3</span><div><h3>Act</h3><p>Built the website, tested every donation link and shared it with others.</p></div></div>
+        <div class="stage"><span class="pin">4</span><div><h3>Reflect</h3><p>Collected feedback and thought about what I learned and what to improve.</p></div></div>
+        <div class="stage"><span class="pin">5</span><div><h3>Demonstrate</h3><p>Presented the site and added evidence to my portfolio.</p></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <p><strong>Helping Hands</strong> is a student Service as Action project. It is not run by or connected to any organization listed.</p>
+    <p>Facts from the <a href="https://www.ilo.org/topics-and-sectors/child-labour" target="_blank" rel="noopener">International Labour Organization</a> and the <a href="https://www.worldbank.org/en/topic/poverty/overview" target="_blank" rel="noopener">World Bank</a>. Links checked October 1, 2026.</p>
+  </footer>
+</div>
+
+<script>
+const ISSUES = [
+  { name: "Child labour", color: "var(--labour)", icon: '<path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>' },
+  { name: "Poverty", color: "var(--poverty)", icon: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>' },
+  { name: "Hunger and water", color: "var(--hunger)", icon: '<path d="M3 12h18a9 9 0 0 1-18 0z"/><path d="M8 8c0-2 2-2 2-4M13 8c0-2 2-2 2-4"/>' },
+  { name: "Education", color: "var(--education)", icon: '<path d="M2 6c3-1.5 7-1.5 10 1 3-2.5 7-2.5 10-1v13c-3-1.5-7-1.5-10 1-3-2.5-7-2.5-10-1z"/><path d="M12 7v13"/>' }
+];
+const PROJECTS = [
+  { issue: "Child labour", name: "GoodWeave International", text: "Certifies rugs and other goods as made without child labour, and rescues and schools children found working.", where: "South Asia and beyond", url: "https://goodweave.org/donate/" },
+  { issue: "Child labour", name: "Kailash Satyarthi Children's Foundation", text: "Rescues children from labour and trafficking and builds child-friendly villages. Founded by Nobel Peace laureate Kailash Satyarthi.", where: "India", url: "https://satyarthi.org.in/" },
+  { issue: "Child labour", name: "UNICEF", text: "Protects children from exploitation, violence and child labour, and helps them stay in school.", where: "Over 190 countries", url: "https://www.unicef.org/take-action" },
+  { issue: "Poverty", name: "GiveDirectly", text: "Sends cash straight to families in extreme poverty so they can choose what they need most.", where: "East Africa and other regions", url: "https://www.givedirectly.org/donate/" },
+  { issue: "Poverty", name: "BRAC", text: "Runs the Ultra-Poor Graduation programme, giving families assets, training and coaching to build lasting income.", where: "Asia and Africa", url: "https://bracusa.org/donate/" },
+  { issue: "Poverty", name: "Heifer International", text: "Gives farming families livestock, training and access to markets so they can earn a living income.", where: "Africa, Asia and the Americas", url: "https://www.heifer.org/" },
+  { issue: "Hunger and water", name: "World Food Programme", text: "Delivers food in emergencies and serves school meals that keep children in class.", where: "Over 120 countries", url: "https://www.wfp.org/support-us" },
+  { issue: "Hunger and water", name: "The Hunger Project", text: "Supports village-led programmes so communities can end their own hunger and poverty.", where: "Africa, South Asia and Latin America", url: "https://thehungerproject.org/" },
+  { issue: "Hunger and water", name: "charity: water", text: "Funds wells and clean-water systems. Public donations go fully to water projects.", where: "Africa and Asia", url: "https://www.charitywater.org/donate" },
+  { issue: "Education", name: "Room to Read", text: "Teaches children to read and supports girls to finish secondary school.", where: "Asia and Africa", url: "https://www.roomtoread.org/donate/" },
+  { issue: "Education", name: "Malala Fund", text: "Works so every girl can get 12 years of free, safe, quality school.", where: "Countries where girls miss school most", url: "https://malala.org/donate" },
+  { issue: "Education", name: "Education Cannot Wait", text: "The UN's global fund for education in emergencies, reaching children affected by war and disaster.", where: "Crisis-affected countries", url: "https://www.educationcannotwait.org/" }
+];
+
+const filtersEl = document.getElementById("filters");
+const gridEl = document.getElementById("grid");
+const issueOf = name => ISSUES.find(i => i.name === name);
+let current = "All";
+try { const s = localStorage.getItem("hh-filter"); if (s === "All" || issueOf(s)) current = s; } catch (e) {}
+
+const svg = inner => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>';
+const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function renderFilters() {
+  const all = [{ name: "All", color: "var(--ink)" }, ...ISSUES];
+  filtersEl.innerHTML = all.map(i => {
+    const n = i.name === "All" ? PROJECTS.length : PROJECTS.filter(p => p.issue === i.name).length;
+    return '<button type="button" class="chip" data-name="' + esc(i.name) + '" aria-pressed="' + (i.name === current) + '" style="--c:' + i.color + '">' +
+      '<span class="sw"></span>' + esc(i.name) + ' <span class="n">' + n + '</span></button>';
+  }).join("");
+}
+
+function renderGrid() {
+  gridEl.innerHTML = PROJECTS.filter(p => current === "All" || p.issue === current).map(p => {
+    const i = issueOf(p.issue), host = new URL(p.url).hostname.replace(/^www\./, "");
+    return '<article class="card" style="--c:' + i.color + '">' +
+      '<div class="top"><span class="ico">' + svg(i.icon) + '</span><span class="tag">' + esc(p.issue) + '</span></div>' +
+      '<h3>' + esc(p.name) + '</h3><p>' + esc(p.text) + '</p>' +
+      '<span class="where">' + svg('<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/>') + esc(p.where) + '</span>' +
+      '<div class="foot"><span class="host">' + esc(host) + '</span>' +
+      '<a class="donate" href="' + p.url + '" target="_blank" rel="noopener" aria-label="Donate to ' + esc(p.name) + ' on ' + esc(host) + '">Donate ' +
+      svg('<path d="M7 17L17 7M8 7h9v9"/>') + '</a></div></article>';
+  }).join("");
+}
+
+filtersEl.addEventListener("click", e => {
+  const b = e.target.closest(".chip");
+  if (!b) return;
+  current = b.dataset.name;
+  try { localStorage.setItem("hh-filter", current); } catch (e) {}
+  renderFilters(); renderGrid();
+});
+
+renderFilters();
+renderGrid();
+</script>
+</body>
+</html>
