@@ -307,6 +307,34 @@ footer strong { color: var(--ink); }
 
 @media(max-width:960px){.cal{grid-template-columns:repeat(2,minmax(0,1fr))}.next-up{grid-template-columns:1fr;padding:28px}.countdown{justify-content:flex-start}.tools{grid-template-columns:1fr}}
 @media(max-width:640px){.cal{grid-template-columns:1fr}.countdown div{min-width:0;flex:1}.countdown b{font-size:2.2rem}.planner .row{grid-template-columns:1fr}.panel{padding:22px}}
+/* ---------- Polish ---------- */
+.sticky-bar{position:fixed;inset:0 0 auto 0;z-index:25;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px max(20px,calc((100vw - 1200px)/2));background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);translate:0 -110%;transition:translate .3s ease}
+.sticky-bar.show{translate:0 0}
+.sticky-bar .brand{color:var(--ink)}
+.sticky-bar .btn{padding:9px 18px;font-size:.9rem;background:var(--poverty);color:#fff}
+.hero h1 em{background:linear-gradient(90deg,var(--gold),#f5dfa6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{transition:transform .15s ease,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{box-shadow:0 10px 26px -10px #e9cb83}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;padding-top:8px;border-top:1px solid #ffffff22;margin-top:6px}
+.hero-stats div{display:grid}
+.hero-stats b{font-family:var(--display);font-weight:400;font-size:2.2rem;line-height:1;color:#fff}
+.hero-stats span{font-size:.8rem;color:rgba(255,255,255,.7)}
+.card{overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--c);opacity:.85}
+.card h3{line-height:1.08}
+.donate{transition:filter .2s,transform .15s}
+.donate:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.chip{transition:background .2s,border-color .2s,color .2s}
+.fact{position:relative}
+.fact .num{transition:color .3s}
+.head .eyebrow{display:inline-flex;align-items:center;gap:10px}
+.head .eyebrow::before{content:"";width:22px;height:2px;background:currentColor;opacity:.6}
+.cta-band{margin-top:72px;padding:48px;border-radius:22px;text-align:center;display:grid;gap:16px;justify-items:center;background:linear-gradient(135deg,#f4e4c8,#dce8dc);color:#183c32}
+.cta-band h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+.cta-band p{max-width:52ch;color:#3f5a4f}
+.cta-band .btn{background:#183c32;color:#fff}
+@media(max-width:640px){.sticky-bar .brand span{display:none}.cta-band{padding:30px 20px}.hero-stats{gap:18px}}
 </style>
 </head>
 <body>
@@ -346,8 +374,9 @@ footer strong { color: var(--ink); }
         <div class="cta">
           <a class="btn btn-gold" href="#projects">Find a project
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3v10M3 8l5 5 5-5"/></svg></a>
-          <a class="btn btn-line" href="#cycle">Why it matters</a>
+          <a class="btn btn-line" href="#campaigns">See campaigns</a>
         </div>
+        <div class="hero-stats"><div><b data-count>29</b><span>trusted projects</span></div><div><b data-camps>13</b><span>awareness days</span></div><div><b>4</b><span>issues tackled</span></div></div>
       </div>
 
       <figure class="hero-photo">
@@ -564,6 +593,13 @@ footer strong { color: var(--ink); }
         </form>
       </div>
 
+      <div class="cta-band">
+        <span class="eyebrow" style="color:#3f5a4f">Ready to act?</span>
+        <h2>Pick one project. Tell one friend.</h2>
+        <p>Small actions add up. Choose a project you care about, join the next awareness day, and share this page.</p>
+        <a class="btn" href="#projects">Browse all <span data-count>29</span> projects</a>
+      </div>
+
       <div class="safe" id="safe">
         <div>
           <span class="eyebrow" style="color:rgba(255,255,255,.7)">Before you give</span>
@@ -614,6 +650,7 @@ footer strong { color: var(--ink); }
 </div>
 
 <button type="button" class="to-top" id="to-top" aria-label="Back to top"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5"/></svg></button>
+<div class="sticky-bar" id="sticky" aria-hidden="true"><a class="brand" href="#top" tabindex="-1"><svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26"><circle cx="16" cy="19" r="9" fill="#f2a93b"/><path d="M23 3l5 5-5 5-5-5z" fill="#e4572e"/></svg><span>Helping Hands</span></a><a class="btn" href="#projects" tabindex="-1">Find a project</a></div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 const ISSUES = [
@@ -827,6 +864,20 @@ $("share").addEventListener("click", async () => {
   const data = { title: document.title, text: "Trusted projects fighting child labour, poverty, hunger and lack of schooling.", url: location.href.split("#")[0] };
   try { if (navigator.share) { await navigator.share(data); return; } await navigator.clipboard.writeText(data.url); toast("Link copied"); } catch (e) {}
 });
+document.querySelectorAll("[data-camps]").forEach(el => el.textContent = CAMPAIGNS.length);
+const sticky = $("sticky");
+addEventListener("scroll", () => sticky.classList.toggle("show", scrollY > 640), { passive: true });
+/* Count-up on key facts */
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return; io.unobserve(en.target);
+    const el = en.target, m = el.textContent.match(/^(\d+)(.*)$/); if (!m) return;
+    const end = +m[1], t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + m[2]; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), { threshold: .6 });
+  document.querySelectorAll(".fact .num").forEach(el => io.observe(el));
+}
 const topBtn = $("to-top");
 addEventListener("scroll", () => topBtn.classList.toggle("show", scrollY > 900), { passive: true });
 topBtn.addEventListener("click", () => scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
