@@ -1,6 +1,6 @@
 # Helping Hands
 
-A student MYP Service as Action website featuring 12 trusted projects that fight child labour, poverty, hunger and lack of schooling. Each project links to its own official donation page.
+A student MYP Service as Action website featuring 21 trusted projects that fight child labour, poverty, hunger and lack of schooling. Each project links to its own official donation page.
 
 **Live site:** https://virajsinghchadha.github.io/helping-hands/
 

@@ -236,6 +236,77 @@ footer strong { color: var(--ink); }
 @media(prefers-reduced-motion:no-preference){.reveal{opacity:0;translate:0 22px;transition:opacity .65s ease,translate .65s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;translate:0 0}.impact-card{transition:transform .2s,box-shadow .2s}.impact-card:hover{transform:translateY(-3px);box-shadow:0 16px 35px #173d3210}}
 @media(min-width:1020px) and (max-width:1520px){.wrap{width:calc(100% - 200px);max-width:none;margin-left:200px;margin-right:0;padding-inline:24px}.issue-legend{left:20px}}@media(min-width:1521px){.issue-legend{left:max(18px,calc((100vw - 1200px)/2 - 180px))}}@media(max-width:739px){.issue-legend{display:none}}@media(min-width:740px) and (max-width:1019px){.wrap{width:calc(100% - 180px);max-width:none;margin-left:180px;margin-right:0;padding-inline:20px}.issue-legend{display:grid;left:14px;top:48%;gap:10px;padding:12px 10px;font-size:.68rem}}@media(max-width:1100px){.impact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:960px){.hero-body{gap:36px}.infographic{width:min(100%,390px)}.impact-grid{grid-template-columns:1fr}}@media(max-width:640px){section.block{padding-block:64px}.hero h1{font-size:clamp(3rem,12vw,4.6rem)}.hero nav ul{display:flex;flex-wrap:wrap;gap:12px 18px}.wrap{padding-inline:20px}.well-story figcaption{padding:16px}}
 
+/* ---------- Toolbar, saved list, share ---------- */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:10px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface)}
+.search:focus-within{border-color:var(--poverty)}
+.search svg{width:18px;height:18px;color:var(--muted);flex:none}
+.search input{flex:1;min-width:0;border:0;background:none;font:inherit;color:var(--ink);padding:12px 0;outline:none}
+.toolbar select{font:inherit;font-weight:700;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 16px}
+.result-count{font-size:.9rem;color:var(--muted);margin:-18px 0 22px}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:16px}
+.card .save{position:absolute;top:22px;right:22px;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);display:grid;place-items:center;cursor:pointer}
+.card .save svg{width:18px;height:18px}
+.card .save[aria-pressed="true"]{color:var(--c);border-color:var(--c)}
+.card .save[aria-pressed="true"] svg{fill:currentColor}
+.card .badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--paper);color:var(--muted);border:1px solid var(--line);margin-left:auto;margin-right:46px}
+.card .links{display:flex;gap:8px;align-items:center}
+.card .site{font-size:.86rem;font-weight:700;color:var(--ink);text-underline-offset:3px}
+.share-btn{background:none}
+.toast{position:fixed;left:50%;bottom:24px;translate:-50% 140%;z-index:40;background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:999px;font-weight:700;font-size:.92rem;transition:translate .25s ease}
+.toast.show{translate:-50% 0}
+
+/* ---------- Campaign calendar ---------- */
+.campaigns{background:var(--surface);border-block:1px solid var(--line)}
+.next-up{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px;align-items:center;padding:36px 40px;border-radius:18px;color:#fff;margin-bottom:28px;background:radial-gradient(ellipse at top right,#466a48,transparent 65%),#183c32}
+.next-up h3{font-size:clamp(2rem,4vw,3rem)}
+.next-up p{color:rgba(255,255,255,.82);margin-top:10px}
+.next-up .eyebrow{color:var(--gold)}
+.countdown{display:flex;gap:14px;justify-content:flex-end}
+.countdown div{text-align:center;min-width:84px;padding:14px 10px;border-radius:14px;background:#ffffff14;border:1px solid #ffffff26}
+.countdown b{display:block;font-family:var(--display);font-weight:400;font-size:2.8rem;line-height:1;font-variant-numeric:tabular-nums}
+.countdown span{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;opacity:.8}
+.cal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.camp{display:grid;gap:10px;align-content:start;padding:24px;border-radius:14px;border:1px solid var(--line);border-left:4px solid var(--c);background:var(--paper)}
+.camp .date{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.camp h3{font-size:1.6rem}
+.camp p{color:var(--muted);font-size:.94rem}
+.camp .idea{font-size:.9rem;color:var(--ink)}
+.camp .idea b{font-weight:800}
+.camp .days{font-size:.82rem;color:var(--muted)}
+.camp a{font-weight:800;font-size:.9rem;color:var(--ink);text-underline-offset:3px}
+
+/* ---------- Quiz + planner ---------- */
+.tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:64px}
+.panel{padding:30px;border-radius:18px;border:1px solid var(--line);background:var(--surface);display:grid;gap:16px;align-content:start}
+.panel h3{font-size:2rem}
+.panel .q{font-weight:700;font-size:1.05rem;line-height:1.45}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;font:inherit;font-weight:600;padding:12px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--poverty)}
+.opt.right{border-color:var(--poverty);background:color-mix(in srgb,var(--poverty) 14%,var(--paper))}
+.opt.wrong{border-color:var(--labour);background:color-mix(in srgb,var(--labour) 12%,var(--paper))}
+.opt:disabled{cursor:default}
+.explain{font-size:.92rem;color:var(--muted)}
+.quiz-foot{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.quiz-foot .btn,.panel .btn{padding:10px 20px;font-size:.95rem;background:var(--poverty);color:#fff}
+.progress{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--poverty);transition:width .3s ease}
+.planner label{display:grid;gap:6px;font-size:.88rem;font-weight:700}
+.planner input,.planner select{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.planner .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.meter{height:14px;border-radius:999px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--hunger),var(--poverty));transition:width .4s ease}
+.meter-label{display:flex;justify-content:space-between;font-size:.9rem;font-weight:700;font-variant-numeric:tabular-nums}
+.small{font-size:.82rem;color:var(--muted)}
+
+/* ---------- Back to top ---------- */
+.to-top{position:fixed;right:20px;bottom:20px;z-index:20;width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:var(--paper);display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top svg{width:18px;height:18px}
+
+@media(max-width:960px){.cal{grid-template-columns:repeat(2,minmax(0,1fr))}.next-up{grid-template-columns:1fr;padding:28px}.countdown{justify-content:flex-start}.tools{grid-template-columns:1fr}}
+@media(max-width:640px){.cal{grid-template-columns:1fr}.countdown div{min-width:0;flex:1}.countdown b{font-size:2.2rem}.planner .row{grid-template-columns:1fr}.panel{padding:22px}}
 </style>
 </head>
 <body>
@@ -260,6 +331,7 @@ footer strong { color: var(--ink); }
       <ul>
         <li><a href="#cycle">The cycle</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#campaigns">Campaigns</a></li>
         <li><a href="#impact">Impact</a></li>
         <li><a href="#help">How to help</a></li>
         <li><a href="#journey">About</a></li>
@@ -270,7 +342,7 @@ footer strong { color: var(--ink); }
       <div class="hero-copy">
         <span class="eyebrow">A student Service as Action project</span>
         <h1>Childhood is for <em>learning</em>, not labour.</h1>
-        <p class="lead">Child labour, poverty, hunger and missing school feed each other. Here are 12 trusted projects breaking that cycle, with links to their work, reported results and official websites.</p>
+        <p class="lead">Child labour, poverty, hunger and missing school feed each other. Here are <span data-count>21</span> trusted projects breaking that cycle, with links to their work, reported results and official websites.</p>
         <div class="cta">
           <a class="btn btn-gold" href="#projects">Find a project
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3v10M3 8l5 5 5-5"/></svg></a>
@@ -418,15 +490,32 @@ footer strong { color: var(--ink); }
   <section class="block projects" id="projects">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow">12 projects</span>
+        <span class="eyebrow"><span data-count>21</span> projects</span>
         <h2>Projects you can <em>support</em>.</h2>
-        <p>Every organization here works directly on the issue and takes donations on its own website. Choose an issue to narrow the list.</p>
+        <p>Every organization here works directly on the issue and takes donations on its own website. Search, filter by issue, and tap the heart to build your own shortlist.</p>
+      </div>
+      <div class="toolbar">
+        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span class="sr-only" hidden>Search projects</span><input id="search" type="search" placeholder="Search by name, country or keyword" aria-label="Search projects"></label>
+        <select id="sort" aria-label="Sort projects"><option value="issue">Sort: by issue</option><option value="az">Sort: A–Z</option></select>
       </div>
       <div class="filters" role="group" aria-label="Filter projects by issue" id="filters"></div>
-      <div class="grid" id="grid" aria-live="polite"></div>
+      <p class="result-count" id="count" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
     </div>
   </section>
 
+
+  <section class="block" id="campaigns" aria-labelledby="campaigns-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Awareness days</span>
+        <h2 id="campaigns-h">Campaigns to <em>join</em> this year.</h2>
+        <p>These international days put a spotlight on each issue. Plan an assembly, poster drive or fundraiser around one, and link it to a project above.</p>
+      </div>
+      <div class="next-up" id="next-up"></div>
+      <div class="cal" id="cal"></div>
+    </div>
+  </section>
 
   <section class="block impact" id="impact"><div class="wrap">
     <div class="head"><span class="eyebrow">From action to outcomes</span><h2>What the work <em>looks like</em>.</h2><p>Behind each project are people inspecting supply chains, supporting families, serving meals, building water systems and keeping children learning. The results below are reported by organizations; they are not guarantees for an individual donation.</p></div>
@@ -448,9 +537,31 @@ footer strong { color: var(--ink); }
       </div>
       <div class="ways">
         <div class="way"><span class="k">i.</span><h3>Learn the facts</h3><p>Read the ILO and World Bank pages so you can explain the issue clearly.</p></div>
-        <div class="way"><span class="k">ii.</span><h3>Share this page</h3><p>Send it to friends and family, or present it in class or at an assembly.</p></div>
+        <div class="way"><span class="k">ii.</span><h3>Share this page</h3><p>Send it to friends and family, or present it in class or at an assembly.</p><button type="button" class="chip share-btn" id="share" style="justify-self:start">Share this page</button></div>
         <div class="way"><span class="k">iii.</span><h3>Shop with care</h3><p>Look for Fairtrade or GoodWeave labels, which check supply chains for child labour.</p></div>
         <div class="way"><span class="k">iv.</span><h3>Fundraise together</h3><p>Hold a bake sale or sponsored walk, then give through an official donation page.</p></div>
+      </div>
+
+      <div class="tools">
+        <div class="panel" id="quiz" aria-labelledby="quiz-h">
+          <span class="eyebrow">Quick check</span>
+          <h3 id="quiz-h">How much do you know?</h3>
+          <div class="progress" aria-hidden="true"><i id="quiz-bar" style="width:0"></i></div>
+          <div id="quiz-body" aria-live="polite"></div>
+        </div>
+        <form class="panel planner" id="planner" aria-labelledby="plan-h" onsubmit="return false">
+          <span class="eyebrow">Fundraiser planner</span>
+          <h3 id="plan-h">Plan a class fundraiser.</h3>
+          <label>Which project will you support?<select id="plan-project"></select></label>
+          <div class="row">
+            <label>Goal amount<input id="plan-goal" type="number" min="1" step="1" value="200" inputmode="numeric"></label>
+            <label>Raised so far<input id="plan-raised" type="number" min="0" step="1" value="0" inputmode="numeric"></label>
+          </div>
+          <div class="meter-label"><span id="plan-pct">0%</span><span id="plan-left"></span></div>
+          <div class="meter" aria-hidden="true"><i id="plan-bar" style="width:0"></i></div>
+          <a class="btn" id="plan-link" href="#" target="_blank" rel="noopener">Give through the official page</a>
+          <p class="small">Saved in this browser only. Collect money with a teacher or parent and give it through the charity's own website.</p>
+        </form>
       </div>
 
       <div class="safe" id="safe">
@@ -485,7 +596,7 @@ footer strong { color: var(--ink); }
       </div>
       <div class="journey">
         <div class="stage"><span class="pin">1</span><div><h3>Investigate</h3><p>Researched child labour and poverty using ILO and World Bank data, then chose four issues.</p></div></div>
-        <div class="stage"><span class="pin">2</span><div><h3>Prepare</h3><p>Shortlisted 12 trusted charities and planned the sections of the site.</p></div></div>
+        <div class="stage"><span class="pin">2</span><div><h3>Prepare</h3><p>Shortlisted trusted charities (now 21) and planned the sections of the site.</p></div></div>
         <div class="stage"><span class="pin">3</span><div><h3>Act</h3><p>Built the website, tested every donation link and shared it with others.</p></div></div>
         <div class="stage"><span class="pin">4</span><div><h3>Reflect</h3><p>Collected feedback and thought about what I learned and what to improve.</p></div></div>
         <div class="stage"><span class="pin">5</span><div><h3>Demonstrate</h3><p>Presented the site and added evidence to my portfolio.</p></div></div>
@@ -502,6 +613,8 @@ footer strong { color: var(--ink); }
   </footer>
 </div>
 
+<button type="button" class="to-top" id="to-top" aria-label="Back to top"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5"/></svg></button>
+<div class="toast" id="toast" role="status"></div>
 <script>
 const ISSUES = [
   { name: "Child labour", color: "var(--labour)", icon: '<path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>' },
@@ -521,50 +634,192 @@ const PROJECTS = [
   { issue: "Hunger and water", name: "charity: water", text: "Funds wells and clean-water systems. Public donations go fully to water projects.", where: "Africa and Asia", url: "https://www.charitywater.org/donate" },
   { issue: "Education", name: "Room to Read", text: "Teaches children to read and supports girls to finish secondary school.", where: "Asia and Africa", url: "https://www.roomtoread.org/donate/" },
   { issue: "Education", name: "Malala Fund", text: "Works so every girl can get 12 years of free, safe, quality school.", where: "Countries where girls miss school most", url: "https://malala.org/donate" },
-  { issue: "Education", name: "Education Cannot Wait", text: "The UN's global fund for education in emergencies, reaching children affected by war and disaster.", where: "Crisis-affected countries", url: "https://www.educationcannotwait.org/" }
+  { issue: "Education", name: "Education Cannot Wait", text: "The UN's global fund for education in emergencies, reaching children affected by war and disaster.", where: "Crisis-affected countries", url: "https://www.educationcannotwait.org/" },
+  { issue: "Child labour", name: "International Justice Mission", text: "Works with police and courts to rescue people from forced labour and trafficking and hold offenders accountable.", where: "Asia, Africa and Latin America", url: "https://www.ijm.org/" , isNew: true },
+  { issue: "Child labour", name: "Save the Children", text: "Protects children from exploitation and harm, and supports them with health care, food and learning.", where: "Over 100 countries", url: "https://www.savethechildren.net/", isNew: true },
+  { issue: "Child labour", name: "The Freedom Fund", text: "Funds frontline groups ending modern slavery and hazardous child labour in hotspot regions.", where: "South Asia, Africa and Brazil", url: "https://freedomfund.org/", isNew: true },
+  { issue: "Poverty", name: "One Acre Fund", text: "Gives smallholder farmers seed, fertiliser and training on credit so harvests and incomes grow.", where: "East and Southern Africa", url: "https://oneacrefund.org/", isNew: true },
+  { issue: "Poverty", name: "Plan International", text: "Helps children, especially girls, escape poverty through schooling, savings groups and job skills.", where: "Over 80 countries", url: "https://plan-international.org/", isNew: true },
+  { issue: "Hunger and water", name: "Mary's Meals", text: "Serves a daily meal in schools, which draws hungry children into the classroom.", where: "Africa, Asia and Latin America", url: "https://www.marysmeals.org/", isNew: true },
+  { issue: "Hunger and water", name: "Action Against Hunger", text: "Treats and prevents child malnutrition and brings clean water to communities in crisis.", where: "Over 55 countries", url: "https://www.actionagainsthunger.org/", isNew: true },
+  { issue: "Hunger and water", name: "WaterAid", text: "Brings clean water, toilets and hygiene to communities, schools and health centres.", where: "Africa, Asia and the Pacific", url: "https://www.wateraid.org/", isNew: true },
+  { issue: "Education", name: "CAMFED", text: "Supports girls in rural Africa through secondary school and into work and leadership.", where: "Ghana, Malawi, Tanzania, Zambia, Zimbabwe", url: "https://camfed.org/", isNew: true }
 ];
 
-const filtersEl = document.getElementById("filters");
-const gridEl = document.getElementById("grid");
+const CAMPAIGNS = [
+  { m: 1, d: 24, issue: "Education", name: "International Day of Education", text: "A UN day celebrating the role of education in peace and development.", idea: "Run a book drive or a 'teach a lesson' swap with a younger class.", url: "https://www.un.org/en/observances/education-day" },
+  { m: 3, d: 22, issue: "Hunger and water", name: "World Water Day", text: "Highlights the billions of people still living without safe water.", idea: "Hold a 'walk for water' carrying jugs around the field, sponsored per lap.", url: "https://www.unwater.org/our-work/world-water-day" },
+  { m: 6, d: 12, issue: "Child labour", name: "World Day Against Child Labour", text: "Led by the ILO to push for an end to child labour in all its forms.", idea: "Make a red-hand poster wall where every student signs a pledge.", url: "https://www.ilo.org/international-days/world-day-against-child-labour" },
+  { m: 10, d: 11, issue: "Education", name: "International Day of the Girl", text: "Focuses on girls' rights and the barriers that keep them out of school.", idea: "Share stories of women who inspire you during morning assembly.", url: "https://www.un.org/en/observances/girl-child-day" },
+  { m: 10, d: 16, issue: "Hunger and water", name: "World Food Day", text: "Marks the founding of the FAO and calls for food for everyone.", idea: "Organise a bake sale or a shared-lunch day and give the proceeds to a school-meals project.", url: "https://www.fao.org/world-food-day" },
+  { m: 10, d: 17, issue: "Poverty", name: "Day for the Eradication of Poverty", text: "Honours people living in poverty and their efforts to change it.", idea: "Try a 'live on less' lunch challenge and explain the $3-a-day line.", url: "https://www.un.org/en/observances/day-for-eradicating-poverty" },
+  { m: 11, d: 20, issue: "Child labour", name: "World Children's Day", text: "UNICEF's day for children's rights, marking the Convention on the Rights of the Child.", idea: "Let students 'take over' a class or newsletter to speak about their rights.", url: "https://www.unicef.org/world-childrens-day" },
+  { m: 12, d: 2, issue: "Child labour", name: "Day for the Abolition of Slavery", text: "Draws attention to forced labour and modern slavery, including of children.", idea: "Check the labels on school supplies and lunch snacks for fair-trade marks.", url: "https://www.un.org/en/observances/slavery-abolition-day" },
+  { m: 12, d: 10, issue: "Poverty", name: "Human Rights Day", text: "Celebrates the Universal Declaration of Human Rights, including the right to an adequate standard of living.", idea: "Write letters or cards to local leaders about an issue on this page.", url: "https://www.un.org/en/observances/human-rights-day" }
+];
+const QUIZ = [
+  { q: "About how many children are in child labour worldwide?", o: ["13 million", "138 million", "1.3 billion"], a: 1, e: "The ILO estimates 138 million children, 54 million of them in hazardous work." },
+  { q: "Why do free school meals help reduce child labour?", o: ["They replace school fees", "They give families a reason to send children to class", "They are only served to working children"], a: 1, e: "A daily meal makes school worth more to families than a child's small wage." },
+  { q: "What does the GoodWeave label on a rug tell you?", o: ["It was made without child labour", "It was made in Europe", "It is organic"], a: 0, e: "GoodWeave inspects supply chains and certifies goods made without child labour." },
+  { q: "What is the safest way to donate to a charity?", o: ["Pay someone who messages you first", "Give on the charity's own website", "Send a gift card"], a: 1, e: "Always give directly on the charity's official site, and ask an adult if you are under 18." },
+  { q: "Roughly how many people live on less than $3 a day?", o: ["83 million", "831 million", "8 billion"], a: 1, e: "The World Bank puts it at about 831 million people." }
+];
+
+const $ = id => document.getElementById(id);
+const filtersEl = $("filters"), gridEl = $("grid"), searchEl = $("search"), sortEl = $("sort"), countEl = $("count");
 const issueOf = name => ISSUES.find(i => i.name === name);
-let current = "All";
-try { const s = localStorage.getItem("hh-filter"); if (s === "All" || issueOf(s)) current = s; } catch (e) {}
+const store = { get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
+let current = store.get("hh-filter2", "All");
+if (current !== "All" && current !== "Saved" && !issueOf(current)) current = "All";
+let saved = new Set(store.get("hh-saved", []));
+let query = "";
 
 const svg = inner => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>';
-const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const HEART = '<path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>';
+const toast = msg => { const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200); };
+
+document.querySelectorAll("[data-count]").forEach(el => el.textContent = PROJECTS.length);
 
 function renderFilters() {
-  const all = [{ name: "All", color: "var(--ink)" }, ...ISSUES];
+  const all = [{ name: "All", color: "var(--ink)" }, ...ISSUES, { name: "Saved", color: "var(--coral)" }];
   filtersEl.innerHTML = all.map(i => {
-    const n = i.name === "All" ? PROJECTS.length : PROJECTS.filter(p => p.issue === i.name).length;
+    const n = i.name === "All" ? PROJECTS.length : i.name === "Saved" ? saved.size : PROJECTS.filter(p => p.issue === i.name).length;
     return '<button type="button" class="chip" data-name="' + esc(i.name) + '" aria-pressed="' + (i.name === current) + '" style="--c:' + i.color + '">' +
-      '<span class="sw"></span>' + esc(i.name) + ' <span class="n">' + n + '</span></button>';
+      '<span class="sw"></span>' + (i.name === "Saved" ? "♥ My shortlist" : esc(i.name)) + ' <span class="n">' + n + '</span></button>';
   }).join("");
+}
+
+function visible() {
+  const q = query.trim().toLowerCase();
+  let list = PROJECTS.filter(p => current === "All" || (current === "Saved" ? saved.has(p.name) : p.issue === current))
+    .filter(p => !q || (p.name + " " + p.text + " " + p.where + " " + p.issue).toLowerCase().includes(q));
+  if (sortEl.value === "az") list = [...list].sort((a, b) => a.name.localeCompare(b.name));
+  else list = [...list].sort((a, b) => ISSUES.indexOf(issueOf(a.issue)) - ISSUES.indexOf(issueOf(b.issue)));
+  return list;
 }
 
 function renderGrid() {
-  gridEl.innerHTML = PROJECTS.filter(p => current === "All" || p.issue === current).map(p => {
-    const i = issueOf(p.issue), host = new URL(p.url).hostname.replace(/^www\./, "");
+  const list = visible();
+  countEl.textContent = "Showing " + list.length + " of " + PROJECTS.length + " projects";
+  if (!list.length) {
+    gridEl.innerHTML = '<p class="empty">' + (current === "Saved" && !saved.size ? "Your shortlist is empty. Tap the heart on any project to save it here." : "No projects match that search. Try another word.") + '</p>';
+    return;
+  }
+  gridEl.innerHTML = list.map(p => {
+    const i = issueOf(p.issue), host = new URL(p.url).hostname.replace(/^www\./, ""), on = saved.has(p.name);
     return '<article class="card" style="--c:' + i.color + '">' +
-      '<div class="top"><span class="ico">' + svg(i.icon) + '</span><span class="tag">' + esc(p.issue) + '</span></div>' +
+      '<button type="button" class="save" data-save="' + esc(p.name) + '" aria-pressed="' + on + '" aria-label="' + (on ? "Remove " : "Save ") + esc(p.name) + (on ? " from" : " to") + ' shortlist">' + svg(HEART) + '</button>' +
+      '<div class="top"><span class="ico">' + svg(i.icon) + '</span><span class="tag">' + esc(p.issue) + '</span>' + (p.isNew ? '<span class="badge">New</span>' : '') + '</div>' +
       '<h3>' + esc(p.name) + '</h3><p>' + esc(p.text) + '</p>' +
       '<span class="where">' + svg('<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/>') + esc(p.where) + '</span>' +
       '<div class="foot"><span class="host">' + esc(host) + '</span>' +
-      '<a class="donate" href="' + p.url + '" target="_blank" rel="noopener" aria-label="Donate to ' + esc(p.name) + ' on ' + esc(host) + '">Donate ' +
+      '<a class="donate" href="' + p.url + '" target="_blank" rel="noopener" aria-label="Support ' + esc(p.name) + ' on ' + esc(host) + '">Support ' +
       svg('<path d="M7 17L17 7M8 7h9v9"/>') + '</a></div></article>';
   }).join("");
 }
+const render = () => { renderFilters(); renderGrid(); };
 
 filtersEl.addEventListener("click", e => {
-  const b = e.target.closest(".chip");
-  if (!b) return;
-  current = b.dataset.name;
-  try { localStorage.setItem("hh-filter", current); } catch (e) {}
-  renderFilters(); renderGrid();
+  const b = e.target.closest(".chip"); if (!b) return;
+  current = b.dataset.name; store.set("hh-filter2", current); render();
 });
+gridEl.addEventListener("click", e => {
+  const b = e.target.closest("[data-save]"); if (!b) return;
+  const n = b.dataset.save;
+  saved.has(n) ? saved.delete(n) : saved.add(n);
+  store.set("hh-saved", [...saved]);
+  toast(saved.has(n) ? "Saved to your shortlist" : "Removed from your shortlist");
+  render();
+  gridEl.querySelector('[data-save="' + CSS.escape(n) + '"]')?.focus();
+});
+searchEl.addEventListener("input", () => { query = searchEl.value; renderGrid(); });
+sortEl.addEventListener("change", renderGrid);
+render();
 
-renderFilters();
-renderGrid();
-document.querySelector(".issue-legend").addEventListener("click",e=>{const key=e.target.closest("[data-issue]");if(!key)return;const filter=[...document.querySelectorAll(".chip")].find(button=>button.dataset.name===key.dataset.issue);filter?.click();document.querySelector("#projects").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});});const motionOff=matchMedia('(prefers-reduced-motion: reduce)');if('IntersectionObserver'in window&&!motionOff.matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});document.querySelectorAll('.head,.fact,.mosaic figure,.break,.card,.way,.safe,.stage,.impact-card,.well-story').forEach(el=>{el.classList.add('reveal');observer.observe(el)})}</script>
+/* Campaigns */
+function nextDate(c, now) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let d = new Date(now.getFullYear(), c.m - 1, c.d);
+  if (d < today) d = new Date(now.getFullYear() + 1, c.m - 1, c.d);
+  return d;
+}
+function renderCampaigns() {
+  const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const list = CAMPAIGNS.map(c => ({ ...c, date: nextDate(c, now) })).sort((a, b) => a.date - b.date);
+  const fmt = d => d.toLocaleDateString(undefined, { day: "numeric", month: "long" });
+  const days = d => Math.round((d - today) / 864e5);
+  const n = list[0], dn = days(n.date);
+  const proj = PROJECTS.filter(p => p.issue === n.issue).map(p => p.name).slice(0, 3).join(", ");
+  $("next-up").innerHTML = '<div><span class="eyebrow">Next up · ' + fmt(n.date) + '</span><h3>' + esc(n.name) + '</h3><p>' + esc(n.text) + ' Projects to link it to: ' + esc(proj) + '.</p></div>' +
+    '<div class="countdown" aria-label="' + (dn === 0 ? "Today" : dn + " days to go") + '">' +
+    (dn === 0 ? '<div><b>Today</b><span>Get involved</span></div>' : '<div><b>' + dn + '</b><span>days</span></div><div><b>' + Math.ceil(dn / 7) + '</b><span>weeks</span></div>') + '</div>';
+  $("cal").innerHTML = list.map(c => {
+    const i = issueOf(c.issue), dd = days(c.date);
+    return '<article class="camp" style="--c:' + i.color + '"><span class="date">' + fmt(c.date) + ' · ' + esc(c.issue) + '</span><h3>' + esc(c.name) + '</h3><p>' + esc(c.text) + '</p>' +
+      '<p class="idea"><b>Try this:</b> ' + esc(c.idea) + '</p><span class="days">' + (dd === 0 ? "Today!" : "In " + dd + " day" + (dd === 1 ? "" : "s")) + '</span>' +
+      '<a href="' + c.url + '" target="_blank" rel="noopener">Official campaign page ↗</a></article>';
+  }).join("");
+}
+renderCampaigns();
+
+/* Quiz */
+let qi = 0, score = 0;
+function renderQuiz() {
+  const body = $("quiz-body");
+  $("quiz-bar").style.width = (qi / QUIZ.length * 100) + "%";
+  if (qi >= QUIZ.length) {
+    body.innerHTML = '<p class="q">You scored ' + score + ' out of ' + QUIZ.length + '.</p><p class="explain">' + (score === QUIZ.length ? "Perfect! You're ready to explain this to others." : "Scroll back up to the facts and cycle to learn more.") + '</p><div class="quiz-foot"><button type="button" class="btn" id="quiz-again">Try again</button></div>';
+    return;
+  }
+  const item = QUIZ[qi];
+  body.innerHTML = '<p class="small">Question ' + (qi + 1) + ' of ' + QUIZ.length + '</p><p class="q">' + esc(item.q) + '</p><div class="opts">' +
+    item.o.map((o, k) => '<button type="button" class="opt" data-k="' + k + '">' + esc(o) + '</button>').join("") + '</div><p class="explain" id="quiz-ex"></p>';
+}
+$("quiz-body").addEventListener("click", e => {
+  if (e.target.id === "quiz-again") { qi = 0; score = 0; renderQuiz(); return; }
+  if (e.target.id === "quiz-next") { qi++; renderQuiz(); return; }
+  const b = e.target.closest(".opt"); if (!b) return;
+  const item = QUIZ[qi], k = +b.dataset.k, opts = [...document.querySelectorAll("#quiz-body .opt")];
+  opts.forEach(o => o.disabled = true);
+  opts[item.a].classList.add("right");
+  if (k === item.a) score++; else b.classList.add("wrong");
+  $("quiz-ex").innerHTML = (k === item.a ? "<b>Correct.</b> " : "<b>Not quite.</b> ") + esc(item.e);
+  $("quiz-body").insertAdjacentHTML("beforeend", '<div class="quiz-foot"><span class="small">Score: ' + score + '</span><button type="button" class="btn" id="quiz-next">' + (qi + 1 < QUIZ.length ? "Next" : "See result") + '</button></div>');
+  $("quiz-next").focus();
+});
+renderQuiz();
+
+/* Fundraiser planner */
+const planSel = $("plan-project"), goalEl = $("plan-goal"), raisedEl = $("plan-raised");
+planSel.innerHTML = PROJECTS.map(p => '<option>' + esc(p.name) + '</option>').join("");
+const plan = store.get("hh-plan", {});
+if (plan.project && PROJECTS.some(p => p.name === plan.project)) planSel.value = plan.project;
+if (plan.goal) goalEl.value = plan.goal;
+if (plan.raised != null) raisedEl.value = plan.raised;
+function updatePlan() {
+  const goal = Math.max(1, +goalEl.value || 1), raised = Math.max(0, +raisedEl.value || 0), pct = Math.min(100, Math.round(raised / goal * 100));
+  $("plan-pct").textContent = pct + "% of goal";
+  $("plan-left").textContent = raised >= goal ? "Goal reached! 🎉" : (goal - raised).toLocaleString() + " to go";
+  $("plan-bar").style.width = pct + "%";
+  const p = PROJECTS.find(x => x.name === planSel.value);
+  $("plan-link").href = p.url;
+  $("plan-link").textContent = "Give to " + p.name + " ↗";
+  store.set("hh-plan", { project: planSel.value, goal: goalEl.value, raised: raisedEl.value });
+}
+[planSel, goalEl, raisedEl].forEach(el => el.addEventListener("input", updatePlan));
+updatePlan();
+
+/* Share + back to top */
+$("share").addEventListener("click", async () => {
+  const data = { title: document.title, text: "Trusted projects fighting child labour, poverty, hunger and lack of schooling.", url: location.href.split("#")[0] };
+  try { if (navigator.share) { await navigator.share(data); return; } await navigator.clipboard.writeText(data.url); toast("Link copied"); } catch (e) {}
+});
+const topBtn = $("to-top");
+addEventListener("scroll", () => topBtn.classList.toggle("show", scrollY > 900), { passive: true });
+topBtn.addEventListener("click", () => scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+
+document.querySelector(".issue-legend").addEventListener("click",e=>{const key=e.target.closest("[data-issue]");if(!key)return;const filter=[...document.querySelectorAll(".chip")].find(button=>button.dataset.name===key.dataset.issue);filter?.click();document.querySelector("#projects").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});});const motionOff=matchMedia('(prefers-reduced-motion: reduce)');if('IntersectionObserver'in window&&!motionOff.matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});document.querySelectorAll('.head,.fact,.mosaic figure,.break,.way,.safe,.stage,.impact-card,.well-story,.camp,.next-up,.panel').forEach(el=>{el.classList.add('reveal');observer.observe(el)})}
+</script>
 </body>
 </html>
